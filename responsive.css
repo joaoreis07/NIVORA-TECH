@@ -28,10 +28,10 @@
 .approach-wordmark span{margin:8px 0 0 5px;color:#78899f;font:9px var(--mono);letter-spacing:.2em}
 .approach-wordmark i{padding:0 7px;color:#50caff;font-style:normal}
 @keyframes approach-mark-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
-.whatsapp-float{position:fixed;right:max(20px,env(safe-area-inset-right));bottom:max(20px,env(safe-area-inset-bottom));z-index:30;display:grid;width:56px;height:56px;place-items:center;border:1px solid #91d9ff55;border-radius:50%;background:linear-gradient(145deg,#1478dc,#20b9e7);box-shadow:0 10px 32px #008bff45;color:#fff;opacity:0;pointer-events:none;transform:translateY(12px) scale(.94);transition:opacity .25s ease,transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .25s ease}
+.whatsapp-float{position:fixed;right:max(20px,env(safe-area-inset-right));bottom:max(20px,env(safe-area-inset-bottom));z-index:30;display:grid;width:56px;height:56px;place-items:center;border:1px solid #91d9ff55;border-radius:50%;background:linear-gradient(145deg,#1478dc,#20b9e7);box-shadow:0 10px 32px #008bff45;color:#fff;opacity:1;pointer-events:auto;transform:none;transition:opacity .25s ease,transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .25s ease}
 .whatsapp-float svg{width:25px;height:25px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
 .whatsapp-float:hover{transform:translateY(-3px) scale(1.04);box-shadow:0 14px 36px #008bff66}
-body.show-contact-float .whatsapp-float{opacity:1;pointer-events:auto;transform:none}
+body.menu-open .whatsapp-float{opacity:0;pointer-events:none;transform:translateY(8px) scale(.96)}
 
 @media(min-width:761px) and (max-width:940px){
   .header-inner{gap:18px;padding-inline:4%}
@@ -248,5 +248,11 @@ body.show-contact-float .whatsapp-float{opacity:1;pointer-events:auto;transform:
 
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
-  [data-reveal],.reveal-ready [data-reveal]{opacity:1!important;transform:none!important}
+  .reveal-ready [data-reveal]{opacity:0;transform:none!important;transition:opacity .2s ease!important}
+  .reveal-ready [data-reveal].visible{opacity:1;transform:none!important}
+  .hero-eyebrow,.hero h1,.hero-lead,.hero-actions,.hero-foot{animation:reduced-fade .24s ease both!important}
+  .emblem{animation:reduced-fade .3s ease both!important}
+  .emblem img,.emblem-aura,.emblem-orbit,.hero-glow,.hero-streak,.particles i,.approach-wordmark img{animation:none!important}
 }
+
+@keyframes reduced-fade{from{opacity:0}to{opacity:1}}

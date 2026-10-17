@@ -36,13 +36,11 @@ const app=document.querySelector('#app');
 const isProjects=location.pathname.replace(/\/$/,'')==='/projetos';
 app.innerHTML=isProjects?projectsPage():home();
 const header=document.querySelector('.site-header');
-const floatTargets=[...document.querySelectorAll('.contact,.footer,.project-visual,.project-copy,.preview-meta,.service-item,.approach-top,.approach-line>div,.section-heading,.manifesto-aside,.emblem,.hero-foot,.hero-actions')];
 const revealItems=[...document.querySelectorAll('[data-reveal]')];
-const isFloatCovered=()=>floatTargets.some(el=>{const r=el.getBoundingClientRect();return r.bottom>innerHeight-74&&r.top<innerHeight-8&&r.right>innerWidth-74&&r.left<innerWidth-8});
 let previousScrollY=scrollY,scrollingUp=false;
 let revealCheckPending=false;
 const showPassedReveals=()=>{revealCheckPending=false;if(!document.body.classList.contains('reveal-ready'))return;revealItems.forEach(el=>{if(el.dataset.revealed!=='true'&&el.getBoundingClientRect().bottom<0){el.classList.add('visible');el.dataset.revealed='true'}})};
-const updateScrollState=()=>{scrollingUp=scrollY<previousScrollY;previousScrollY=scrollY;header.classList.toggle('scrolled',scrollY>24);document.body.classList.toggle('show-contact-float',scrollY>Math.min(320,innerHeight*.42)&&!isFloatCovered()&&!document.body.classList.contains('menu-open'));if(!revealCheckPending){revealCheckPending=true;requestAnimationFrame(showPassedReveals)}};
+const updateScrollState=()=>{scrollingUp=scrollY<previousScrollY;previousScrollY=scrollY;header.classList.toggle('scrolled',scrollY>24);if(!revealCheckPending){revealCheckPending=true;requestAnimationFrame(showPassedReveals)}};
 addEventListener('scroll',updateScrollState,{passive:true});
 addEventListener('resize',updateScrollState,{passive:true});
 updateScrollState();
@@ -53,8 +51,9 @@ menu.addEventListener('click',()=>setMenuOpen(menu.getAttribute('aria-expanded')
 mainNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setMenuOpen(false)));
 addEventListener('keydown',e=>{if(e.key==='Escape'&&menu.getAttribute('aria-expanded')==='true')setMenuOpen(false)});
 const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
-if(!reduceMotion&&'IntersectionObserver'in window){
+if('IntersectionObserver'in window){
   document.body.classList.add('reveal-ready');
+  if(reduceMotion)document.body.classList.add('reduced-motion');
   const revealObserver=new IntersectionObserver(entries=>entries.forEach(e=>{
     if(e.isIntersecting){
       if(scrollingUp&&e.target.dataset.revealed==='true'){
