@@ -13,6 +13,14 @@
 .portfolio-section .project-row:nth-child(4){transition-delay:240ms}
 .portfolio-section .project-row:nth-child(5){transition-delay:320ms}
 .portfolio-section .project-row:nth-child(6){transition-delay:400ms}
+.approach-top{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(320px,.92fr);gap:7%;align-items:center}
+.approach-brand{min-width:0}
+.approach-wordmark{position:relative;display:flex;flex-direction:column;align-items:flex-start;margin:44px 0 0;overflow:hidden}
+.approach-wordmark:before{content:"";position:absolute;left:8%;top:10%;width:62%;height:80%;border-radius:50%;background:#087fff18;filter:blur(54px);pointer-events:none}
+.approach-wordmark img{position:relative;display:block;width:min(100%,650px);height:auto;aspect-ratio:3/1;object-fit:contain;mix-blend-mode:screen;filter:brightness(2.4) saturate(1.18) drop-shadow(0 0 22px #087fff3d);animation:approach-mark-float 7s ease-in-out infinite}
+.approach-wordmark span{margin:8px 0 0 5px;color:#78899f;font:9px var(--mono);letter-spacing:.2em}
+.approach-wordmark i{padding:0 7px;color:#50caff;font-style:normal}
+@keyframes approach-mark-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
 .whatsapp-float{position:fixed;right:max(20px,env(safe-area-inset-right));bottom:max(20px,env(safe-area-inset-bottom));z-index:30;display:grid;width:56px;height:56px;place-items:center;border:1px solid #91d9ff55;border-radius:50%;background:linear-gradient(145deg,#1478dc,#20b9e7);box-shadow:0 10px 32px #008bff45;color:#fff;opacity:0;pointer-events:none;transform:translateY(12px) scale(.94);transition:opacity .25s ease,transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .25s ease}
 .whatsapp-float svg{width:25px;height:25px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
 .whatsapp-float:hover{transform:translateY(-3px) scale(1.04);box-shadow:0 14px 36px #008bff66}
@@ -102,6 +110,7 @@ body.show-contact-float .whatsapp-float{opacity:1;pointer-events:auto;transform:
 
   .approach{padding-top:75px;padding-bottom:78px}
   .approach-top{display:block}
+  .approach-wordmark{display:none}
   .approach-top>p{max-width:34ch;margin-top:21px;font-size:clamp(21px,5.6vw,25px);line-height:1.38}
   .approach-line{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:18px;row-gap:25px;margin-top:39px}
   .approach-line>div{padding:18px 0 0}
