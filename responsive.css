@@ -1,7 +1,7 @@
 /* Responsive polish: keep the message, artwork, and actions clear on every screen. */
 [data-reveal]{opacity:1;transform:none;transition:none}
 .project-row[data-reveal]:not(.visible) .project-visual{transform:none}
-.reveal-ready [data-reveal]{opacity:0;transform:translate3d(0,18px,0);transition:opacity .65s ease,transform .65s cubic-bezier(.2,.7,.2,1)}
+.reveal-ready [data-reveal]{opacity:0;transform:translate3d(0,24px,0) scale(.99);transition:opacity .72s ease,transform .72s cubic-bezier(.2,.7,.2,1)}
 .reveal-ready [data-reveal].visible{opacity:1;transform:translate3d(0,0,0)}
 .reveal-ready .project-row[data-reveal]:not(.visible) .project-visual{transform:translateY(12px)}
 .button:focus-visible,.text-link:focus-visible,.main-nav a:focus-visible,.project-visual:focus-visible,.whatsapp-float:focus-visible{outline:2px solid var(--cyan);outline-offset:4px}
@@ -85,6 +85,24 @@ body.show-contact-float .whatsapp-float{opacity:1;pointer-events:auto;transform:
   .hero-streak{opacity:.38;filter:drop-shadow(0 0 4px #18a8ff)}
   .streak-a{width:72vw;top:45%;right:-14%}
   .streak-b{width:56vw;bottom:12%;right:-8%}
+
+  /* A clear entrance sequence and ambient movement that work without mouse input. */
+  .hero-eyebrow{animation:mobile-enter .7s .08s both}
+  .hero h1{animation:mobile-enter .78s .2s both}
+  .hero-lead{animation:mobile-enter .78s .34s both}
+  .hero-actions{animation:mobile-enter .78s .48s both}
+  .hero-foot{animation:mobile-enter .78s .62s both}
+  .emblem{animation:mobile-emblem-in 1.05s .28s both}
+  .emblem img{animation:mobile-emblem-float 5.8s 1.4s ease-in-out infinite}
+  .emblem-aura,.hero-glow{animation:mobile-aura 5.5s ease-in-out infinite alternate}
+  .emblem-orbit{animation:mobile-orbit 18s linear infinite}
+  .hero-streak{animation-duration:6.8s}
+  .reveal-ready [data-reveal]{transform:translate3d(0,28px,0) scale(.99);transition-duration:.78s}
+  .reveal-ready .service-item[data-reveal]{transition-delay:calc(var(--reveal-index,0) * 110ms)}
+  .reveal-ready .project-row[data-reveal]:not(.visible) .project-visual{transform:translateY(18px) scale(.985)}
+  .project-visual img{transition:transform .8s cubic-bezier(.2,.7,.2,1),filter .8s ease}
+  .service-item:active{border-color:#4dbfff88}
+  .button:active,.text-link:active,.project-visual:active{transition-duration:.12s}
 
   .section-pad{padding-left:22px;padding-right:22px}
   .manifesto{padding-top:55px;padding-bottom:58px}
@@ -221,6 +239,12 @@ body.show-contact-float .whatsapp-float{opacity:1;pointer-events:auto;transform:
   .projects-hero h1{font-size:37px}
   .portfolio-section .project-copy h3{font-size:24px}
 }
+
+@keyframes mobile-enter{from{opacity:0;transform:translate3d(0,20px,0)}to{opacity:1;transform:translate3d(0,0,0)}}
+@keyframes mobile-emblem-in{from{opacity:0;transform:translate3d(0,18px,0) scale(.92);filter:brightness(.55)}to{opacity:.96;transform:translate3d(0,0,0) scale(1);filter:brightness(1)}}
+@keyframes mobile-emblem-float{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-7px) scale(1.012)}}
+@keyframes mobile-aura{from{opacity:.48;scale:.94}to{opacity:.9;scale:1.06}}
+@keyframes mobile-orbit{from{transform:rotateX(66deg) rotateZ(-18deg)}to{transform:rotateX(66deg) rotateZ(342deg)}}
 
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
