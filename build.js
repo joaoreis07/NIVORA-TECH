@@ -8,7 +8,7 @@ const output = join(root, 'dist');
 await rm(output, { recursive: true, force: true });
 await mkdir(output, { recursive: true });
 
-for (const file of ['index.html', 'src.js', 'styles.css']) {
+for (const file of ['index.html', 'src.js', 'styles.css', 'responsive.css']) {
   await copyFile(join(root, file), join(output, file));
 }
 
