@@ -16,6 +16,9 @@
 .hero-actions .button{white-space:nowrap}
 .emblem{width:min(55vw,720px);aspect-ratio:1.75/1}.emblem img{width:100%;height:100%;object-fit:contain;mix-blend-mode:screen;filter:drop-shadow(0 0 26px #007dff66)}
 @media(max-width:760px){.emblem{width:min(75vw,390px);aspect-ratio:1.75/1}}
+.project-visual.clinic-visual{background:#05070b}
+.project-visual.clinic-visual img.project-main-image{object-fit:contain;transform:scale(.94);filter:none}
+.project-visual.clinic-visual:hover img.project-main-image{transform:scale(.98);filter:none}
 .button:hover span,.text-link:hover span{transform:scale(1.18)}
 .service-item:hover .service-arrow{color:#69caff;transform:scale(1.2)}
 .businessos-visual .project-main-image{object-fit:contain;padding:10px 0;background:radial-gradient(ellipse at 55% 50%,#0b2140,#080d15 72%)}
